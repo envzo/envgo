@@ -7,7 +7,6 @@ else
 fi
 
 export __zo_goenv__=0
-export __zo_slogan__=0
 
 zoinitenv() {
 	# set GOPATH
@@ -21,12 +20,13 @@ zoinitenv() {
 	export GOBIN=$GOPATH/bin
 	export PATH=$GOPATH:$PATH
 
+	welcome
+
 	export __zo_goenv__=1
 }
 
 zohome() {
 	zoinitenv
-	welcome
 
 	if [[ $1 == "/" ]]; then
 		jumpdir $ZOHOME
@@ -36,10 +36,6 @@ zohome() {
 }
 
 welcome() {
-	if [[ $__zo_slogan__ == 1 ]]; then
-		return
-	fi
-
 	echo
 	echo "    .-''-.  ,---.   .--.,---.  ,---. ____..--'    ,-----.     ";
 	echo "  .'_ _   \ |    \  |  ||   /  |   ||        |  .'  .-,  '.   ";
@@ -51,13 +47,25 @@ welcome() {
 	echo "  \       / |  |    |  |  \     /  |    (_,_)|  '. \_/\`\`\".'   ";
 	echo "   \`'-..-'  '--'    '--'   \`---\`   |_________|    '-----'     ";
 	echo
-
-	export __zo_slogan__=1
 }
 
 jumpdir() {
 	if [ -d $1 ]; then
 		cd $1
+	fi
+}
+
+zoproj() {
+	if [[ $2 == "" ]]; then
+		return
+	fi
+
+	zoinitenv
+
+	if [[ $1 == "create" ]]; then
+		dir=$GOPATH/src/github.com/zodash/$2
+		mkdir -p $dir
+		jumpdir $dir
 	fi
 }
 
