@@ -60,3 +60,8 @@ jumpdir() {
 		cd $1
 	fi
 }
+
+zogithub() {
+	homepage=https://github.com/envzo
+	/usr/bin/open -a "/Applications/Google Chrome.app" $homepage
+}
