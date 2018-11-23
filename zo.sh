@@ -50,7 +50,13 @@ welcome() {
 }
 
 jumpdir() {
-	if [ -d $1 ]; then
+	if [ ! -d $1 ]; then
+		return
+	fi
+
+	if [[ $1 == "/" ]]; then
+		cd $ZOHOME
+	else
 		cd $1
 	fi
 }
@@ -62,10 +68,14 @@ zoproj() {
 
 	zoinitenv
 
+	dir=$GOPATH/src/github.com/zodash/$2
+
 	if [[ $1 == "create" ]]; then
-		dir=$GOPATH/src/github.com/zodash/$2
 		mkdir -p $dir
 		jumpdir $dir
+	elif [[ $1 == "delete" ]]; then
+		rm -rf $dir
+		jumpdir /
 	fi
 }
 
