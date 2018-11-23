@@ -8,7 +8,40 @@ fi
 
 export __zo_goenv__=0
 
-zoinitenv() {
+zohome() {
+	_initenv
+
+	if [[ $1 == "/" ]]; then
+		_jumpdir $ZOHOME
+	else
+		_jumpdir $GOPATH/src/github.com/zodash/$1
+	fi
+}
+
+zoproj() {
+	if [[ $2 == "" ]]; then
+		return
+	fi
+
+	_initenv
+
+	dir=$GOPATH/src/github.com/zodash/$2
+
+	if [[ $1 == "create" ]]; then
+		mkdir -p $dir
+		_jumpdir $dir
+	elif [[ $1 == "delete" ]]; then
+		rm -rf $dir
+		_jumpdir /
+	fi
+}
+
+zogithub() {
+	homepage=https://github.com/envzo
+	/usr/bin/open -a "/Applications/Google Chrome.app" $homepage
+}
+
+_initenv() {
 	# set GOPATH
 	# for company uses, it's strongly recommand to have only one GOPATH
 
@@ -20,22 +53,12 @@ zoinitenv() {
 	export GOBIN=$GOPATH/bin
 	export PATH=$GOPATH:$PATH
 
-	welcome
+	_welcome
 
 	export __zo_goenv__=1
 }
 
-zohome() {
-	zoinitenv
-
-	if [[ $1 == "/" ]]; then
-		jumpdir $ZOHOME
-	else
-		jumpdir $GOPATH/src/github.com/zodash/$1
-	fi
-}
-
-welcome() {
+_welcome() {
 	echo
 	echo "    .-''-.  ,---.   .--.,---.  ,---. ____..--'    ,-----.     ";
 	echo "  .'_ _   \ |    \  |  ||   /  |   ||        |  .'  .-,  '.   ";
@@ -49,7 +72,7 @@ welcome() {
 	echo
 }
 
-jumpdir() {
+_jumpdir() {
 	if [ ! -d $1 ]; then
 		return
 	fi
@@ -59,27 +82,4 @@ jumpdir() {
 	else
 		cd $1
 	fi
-}
-
-zoproj() {
-	if [[ $2 == "" ]]; then
-		return
-	fi
-
-	zoinitenv
-
-	dir=$GOPATH/src/github.com/zodash/$2
-
-	if [[ $1 == "create" ]]; then
-		mkdir -p $dir
-		jumpdir $dir
-	elif [[ $1 == "delete" ]]; then
-		rm -rf $dir
-		jumpdir /
-	fi
-}
-
-zogithub() {
-	homepage=https://github.com/envzo
-	/usr/bin/open -a "/Applications/Google Chrome.app" $homepage
 }
