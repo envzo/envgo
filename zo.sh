@@ -14,7 +14,7 @@ zohome() {
 	if [[ $1 == "/" ]]; then
 		_jumpdir $ZOHOME
 	else
-		_jumpdir $GOPATH/src/github.com/zodash/$1
+		_jumpdir $GOPATH/src/github.com/envzo/$1
 	fi
 }
 
@@ -25,7 +25,7 @@ zoproj() {
 
 	_initenv
 
-	dir=$GOPATH/src/github.com/zodash/$2
+	dir=$GOPATH/src/github.com/envzo/$2
 
 	if [[ $1 == "create" ]]; then
 		mkdir -p $dir
