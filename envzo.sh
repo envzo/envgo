@@ -8,13 +8,13 @@ fi
 
 export __zo_goenv__=0
 
-zohome() {
+zo() {
 	_initenv
 
-	if [[ $1 == "/" ]]; then
+	if [[ $1 == "" ]]; then
 		_jumpdir $ZOHOME
 	else
-		_jumpdir $GOPATH/src/github.com/envzo/$1
+		_jumpdir $ZOHOME/$1
 	fi
 }
 
@@ -25,14 +25,14 @@ zoproj() {
 
 	_initenv
 
-	dir=$GOPATH/src/github.com/envzo/$2
+	dir=$ZOHOME/$2
 
 	if [[ $1 == "create" ]]; then
 		mkdir -p $dir
 		_jumpdir $dir
 	elif [[ $1 == "delete" ]]; then
 		rm -rf $dir
-		_jumpdir /
+		_jumpdir
 	fi
 }
 
@@ -77,9 +77,5 @@ _jumpdir() {
 		return
 	fi
 
-	if [[ $1 == "/" ]]; then
-		cd $ZOHOME
-	else
-		cd $1
-	fi
+	cd $1
 }

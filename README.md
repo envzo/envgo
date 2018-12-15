@@ -1,13 +1,10 @@
-# envgo
-Go workflow
-
 # setup
-1. add these to your .zshrc file:
+1. add below cmd to your .zshrc file:
 ```
-source ~/envgo/zo.sh
+source ~/envzo/envzo.sh
 ```
 
-# how to use
-1. zohome [/ | <projname>]
-2. zoproj [create | delete] <projname>
+# usage
+1. zo [<proj>]
+2. zoproj [create | delete] <proj>
 3. zogithub
