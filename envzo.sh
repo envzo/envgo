@@ -49,7 +49,7 @@ _initenv() {
 		return
 	fi
 
-	export GOPATH=$ZOHOME
+	export GOPATH=$HOME/envgo
 	export GOBIN=$GOPATH/bin
 	export PATH=$GOBIN:$PATH
 
