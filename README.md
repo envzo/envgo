@@ -4,7 +4,7 @@
 source ~/envzo/envzo.sh
 ```
 
-# usage
-1. zo [<proj>]
-2. zoproj [create | delete] <proj>
+# commands
+1. zo [\<proj\>]
+2. zoproj [create | delete] \<proj\>
 3. zogithub
