@@ -74,7 +74,7 @@ _welcome() {
 
 _jumpdir() {
 	if [ ! -d $1 ]; then
-		echo "${1}: no such directory"
+		echo "$1: no such directory"
 		return
 	fi
 
