@@ -37,8 +37,21 @@ zoproj() {
 }
 
 zogithub() {
-	homepage=https://github.com/envzo
-	/usr/bin/open -a "/Applications/Google Chrome.app" $homepage
+	_openBrower https://github.com/envzo
+}
+
+zogitlab() {
+	if [[ $1 != "" ]]; then
+		_openBrower https://git.zuodashi.com/envzo/$1
+	fi
+}
+
+_openBrower() {
+	if [[ $1 != "" ]]; then
+		/usr/bin/open -a "/Applications/Google Chrome.app" $1
+	fi
+}
+
 }
 
 _initenv() {
