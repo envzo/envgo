@@ -47,12 +47,12 @@ zogitlab() {
 }
 
 zoci() {
-	_openBrower "http://ci.zuodashi.com/"
+	_openBrower "http://ci.zuodashi.com/job/$1"
 }
 
 # 后端 HK 节点 CI/CD
 zoci2() {
-	_openBrower "http://ci-pod.zuodashi.com/"
+	_openBrower "http://ci-pod.zuodashi.com/job/$1"
 }
 
 _openBrower() {
