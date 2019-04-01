@@ -46,12 +46,26 @@ zogitlab() {
 	fi
 }
 
+zoci() {
+	_openBrower "http://ci.zuodashi.com/"
+}
+
+# 后端 HK 节点 CI/CD
+zoci2() {
+	_openBrower "http://ci-pod.zuodashi.com/"
+}
+
 _openBrower() {
 	if [[ $1 != "" ]]; then
 		/usr/bin/open -a "/Applications/Google Chrome.app" $1
 	fi
 }
 
+# todo rise git merge request
+zomr() {
+# get git branch name
+# assemble url
+# open with browser
 }
 
 _initenv() {
@@ -66,7 +80,7 @@ _initenv() {
 	export GOBIN=$GOPATH/bin
 	export PATH=$GOBIN:$PATH
 
-	_welcome
+	_welcome | lolcat
 
 	export __zo_goenv__=1
 }
