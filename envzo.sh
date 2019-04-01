@@ -52,7 +52,7 @@ zoci() {
 
 # 后端 HK 节点 CI/CD
 zoci2() {
-	_openBrower "http://ci-pod.zuodashi.com/job/$1"
+	_openBrower "http://ci2.zuodashi.com/job/$1"
 }
 
 _openBrower() {
